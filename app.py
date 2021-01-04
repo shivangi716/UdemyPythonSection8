@@ -14,10 +14,6 @@ app.secret_key = "Python"
 api = Api(app)
 app.config['JWT_AUTH_URL_RULE'] = '/login'
 
-@app.before_first_request
-def create_table():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Store, "/store/<string:name>")
